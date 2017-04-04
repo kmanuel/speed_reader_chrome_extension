@@ -5,7 +5,11 @@
   "description": "This extension will let you speed-read selected text",
   "version": "1.0",
 
-   "background": {
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "options.html"
+  },
+  "background": {
     "persistent": false,
     "scripts":["background.js"]
   },
@@ -13,7 +17,6 @@
   {
     "matches": ["http://*/*", "https://*/*", "<all_urls>"],
     "js": ["content.js"]
-  }
-  ],
-  "permissions": ["activeTab", "contextMenus"]
+  }],
+  "permissions": ["activeTab", "contextMenus", "storage"]
 } 
