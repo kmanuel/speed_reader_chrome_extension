@@ -1,0 +1,53 @@
+#speedread_overlay {
+	color:black;
+	text-align:center;
+	line-height:80vh;
+	vertical-align: middle;
+	font-size: 3em;
+	background-color: #888;
+	position:fixed;
+	left:10vw;
+	top:10vh;
+	border:none;
+	width:80vw;
+	height:80vh;
+	z-index:999999;
+}
+
+/*
+#speedread_close {
+    position:absolute;
+    top:0px;
+    right:0px;
+    width: 30px;
+    height: 30px;
+    cursor:pointer;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 30px;
+    background: #605F61;
+    font-size: 31px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 11px 3px;       
+}
+*/
+
+#speedread_close {
+    float:right;
+    cursor:pointer;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 30px;
+    background: #605F61;
+    font-size: 31px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 11px 3px;       
+}
+
+#speedread_close:before {
+    content: "×";
+}

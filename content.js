@@ -1,6 +1,6 @@
 var CHUNK_WAIT = 150;
 var WORDS_PER_CHUNK = 3;
-var CLOSE_WAIT = 1000;
+var CLOSE_WAIT = 5000;
 
 
 var port = chrome.runtime.connect();
@@ -18,10 +18,22 @@ function create_speed_read(message) {
 
 		chrome.storage.sync.get('speedreader_wordsPerPage', function(data) {
 			WORDS_PER_CHUNK = data.speedreader_wordsPerPage;
-			var div = document.createElement("div");
-			div.setAttribute("style", "color:black; text-align:center; line-height:80vh; vertical-align: middle; font-size: 3em; background-color: #888; position:fixed; left:10vw; top:10vh; border:none; width:80vw; height:80vh; z-index:999999;");
-			document.body.appendChild(div);
-			speedRead(div, message);
+			var holderDiv = document.createElement("div");
+			holderDiv.id = "speedread_overlay"
+			var closeSpan = document.createElement("span");
+			closeSpan.id = "speedread_close";
+
+
+			closeSpan.onclick = function() {closeSpeedReadWindowNow(holderDiv);};
+
+			holderDiv.appendChild(closeSpan);
+
+			var textP = document.createElement("p");
+			holderDiv.appendChild(textP);
+			
+			document.body.appendChild(holderDiv);
+
+			speedRead(textP, message);
 		});
 	});
 }
@@ -58,4 +70,6 @@ function closeSpeedReadWindow(div) {
 
 }
 
-
+function closeSpeedReadWindowNow(div) {
+	div.setAttribute("style", "display: none");
+}
